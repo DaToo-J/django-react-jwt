@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Prepare Frontend Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. create frontend app: `npx create-react-app frontend`;
 
-## Available Scripts
+2. delete files: `index.css, logo.svg, reportWebVitals.js, setupTests.js, App.test.js`;
 
-In the project directory, you can run:
+3. delete `App.css` contents;
 
-### `npm start`
+4. create `pages, context, utils` folders in `src` folder.
+   1. in `pages`, create `header.js, home.js, login.js` files.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   2. in `context`, create `AuthContext.js` file.
+      - `AuthContext_old.js` is related to the video of [Authentication & Refreshing Tokens Implementation](https://www.youtube.com/watch?v=xjMP0hspNLE);
+      - `AuthContext.js` is related to the video of [Refreshing Tokens With Axios Interceptors](https://www.youtube.com/watch?v=16-1mTdGBoM&list=PL-51WBLyFTg1gPEHotYAhNAPsisChkyTc&index=2);
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   3. in `utils`, create `PrivateRoute.jsx, axiosInstance.js, useAxios.js` file.
+      - `axiosInstance.js, useAxios.js` is related to the video of [Refreshing Tokens With Axios Interceptors](https://www.youtube.com/watch?v=16-1mTdGBoM&list=PL-51WBLyFTg1gPEHotYAhNAPsisChkyTc&index=2);
 
-### `npm test`
+5. the structure is:
+   ```
+   ── src
+    ├── App.css
+    ├── App.js
+    ├── context
+    │   └── AuthContext.js
+    ├── index.js
+    ├── pages
+    │   ├── header.js
+    │   ├── home.js
+    │   └── login.js
+    └── utils
+        └── PrivateRoute.jsx
+   ```
+6. install some libraries:
+   1. `npm install --save react-router-dom`;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   2. `npm install --save jwt-decode`;
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   3. `npm install --save axios`;
+   
+   4. `npm install --save dayjs`;

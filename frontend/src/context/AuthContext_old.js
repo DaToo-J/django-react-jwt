@@ -40,21 +40,48 @@ export const AuthProvider = ({children}) => {
         navigate('/')
     }
 
+    let updateToken = async () => {
+        let response = await fetch('http://localhost:8000/api/token/refresh/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'refresh': authTokens?.refresh })
+        })
+        let data = await response.json()
+
+        if(response.status === 200){
+            setAuthTokens(data)
+            setUser(jwt_decode(data.access))
+            localStorage.setItem('authTokens', JSON.stringify(data))
+        }else{
+            logoutUser()
+        }
+
+        if(loading){
+            setLoading(false)
+        }
+    }
+
     let contextData = {
         user: user,
-        setUser: setUser,
         authTokens: authTokens,
-        setAuthTokens: setAuthTokens,
         loginUser: loginUser,
         logoutUser: logoutUser,
     }
 
     useEffect(() => {
-        if(authTokens){
-            setUser(jwt_decode(authTokens.access))
+        if(loading){
+            updateToken()
         }
-        setLoading(false)
-        
+        let fourMinutes = 1000 * 60 * 4
+        let interval = setInterval(() => {
+           if(authTokens){
+               updateToken()
+           } 
+        }, fourMinutes);
+        return () => clearInterval(interval)
+
     }, [authTokens, loading])
 
     return (
